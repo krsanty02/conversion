@@ -1,0 +1,28 @@
+package com.example.jpa.service;
+
+
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.jpa.dao.UserDao;
+import com.example.jpa.entities.User1;
+
+@Service
+public class UserService {
+	@Autowired
+	private UserDao userDao;
+	
+public User1 getSave(User1 user) {
+	System.out.println("coming in service");
+	return userDao.save(user);
+	//return userDao.getOne(12);User
+}
+
+public String getUser() {
+	// TODO Auto-generated method stub
+	userDao.deleteById(12);
+	return "deleted";
+	
+}
+}

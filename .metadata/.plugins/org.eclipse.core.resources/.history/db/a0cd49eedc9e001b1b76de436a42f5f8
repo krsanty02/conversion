@@ -1,0 +1,32 @@
+package com.example.userService.controller;
+
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
+
+import com.example.userService.entity.User;
+import com.example.userService.service.UserService;
+
+import antlr.collections.List;
+
+@RestController
+public class UserController {
+	@Autowired
+	private UserService userService;
+	@Autowired
+	private RestTemplate restTemplate;
+	@GetMapping(value="/getUser/{id}")
+public ResponseEntity<Optional<User>>  findUser(@PathVariable ("id") int id){
+		Optional<User> user=userService.findUserById(id);
+	 //return ResponseEntity.status(HttpStatus.OK).body(user); 
+		return (ResponseEntity<Optional<User>>) this.restTemplate.getForObject("http://localhost:9091/getStudent/101", List.class);
+		
+	}
+}

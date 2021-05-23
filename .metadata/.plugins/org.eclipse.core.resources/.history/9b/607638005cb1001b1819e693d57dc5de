@@ -1,0 +1,5 @@
+package com.example.userService.proxy;
+
+public interface UserProxy {
+
+}

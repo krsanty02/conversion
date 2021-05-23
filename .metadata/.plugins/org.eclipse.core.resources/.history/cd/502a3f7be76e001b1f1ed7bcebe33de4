@@ -1,0 +1,70 @@
+package com.example.jpa.entities;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+@Entity
+public class User1 {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int id;
+	private String userName;
+	private String password;
+	private String city;
+	@OneToOne(mappedBy = "user")
+	@JsonBackReference
+	private Person person;
+	public User1() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public User1(int id, String userName, String password, String city, Person person) {
+		super();
+		this.id = id;
+		this.userName = userName;
+		this.password = password;
+		this.city = city;
+		this.person = person;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public String getCity() {
+		return city;
+	}
+	public void setCity(String city) {
+		this.city = city;
+	}
+	public Person getPerson() {
+		return person;
+	}
+	public void setPerson(Person person) {
+		this.person = person;
+	}
+	@Override
+	public String toString() {
+		return "User1 [id=" + id + ", userName=" + userName + ", password=" + password + ", city=" + city + ", person="
+				+ person + "]";
+	}
+	
+}

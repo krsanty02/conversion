@@ -1,0 +1,89 @@
+package com.example.jpa.service;
+
+
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.jpa.dao.PersonDao;
+import com.example.jpa.dao.UserDao;
+import com.example.jpa.entities.Person;
+import com.example.jpa.entities.User1;
+
+@Service
+public class UserService {
+	@Autowired
+	private UserDao userDao;
+	
+	@Autowired
+	private PersonDao personDao;
+	
+public User1 getSave(User1 user) {
+	System.out.println("coming in service");
+	return userDao.save(user);
+	//return userDao.getOne(12);User
+}
+
+public Optional<User1> getUser() {
+	// TODO Auto-generated method stub
+	return userDao.findById(35);
+
+	
+}
+
+public List<User1> getAllUser() {
+	// TODO Auto-generated method stub
+	return userDao.findAll();
+}
+
+public String delUser() {
+	// TODO Auto-generated method stub
+	 userDao.deleteById(15);
+	 return "deleted";
+}
+
+public User1 updtUser() {
+	// TODO Auto-generated method stub
+	
+	Optional<User1>opt=userDao.findById(15);
+User1 user=	opt.get();
+user.setUserName("Bharat");
+	return userDao.save(user);
+	
+}
+
+public User1 findByName() {
+	// TODO Auto-generated method stub
+	return userDao.findByUserName("Bharat");
+}
+
+public User1 getData() {
+	// TODO Auto-generated method stub
+	return userDao.getData("Bharat");
+}
+
+public Person getSave(Person person) {
+	// TODO Auto-generated method stub
+	Person person1=new Person();
+	System.out.println(person.toString());
+	return personDao.save(person);
+	//System.out.println(person1.toString());
+	//System.out.println(person1.getUser().getUserName());
+	//return person1;
+}
+public Optional<Person> getPerson() {
+	// TODO Auto-generated method stub
+	return personDao.findById(36);
+
+	
+}
+
+public List<Person> getAllPerson() {
+	// TODO Auto-generated method stub
+	return personDao.findAll();
+}
+
+}

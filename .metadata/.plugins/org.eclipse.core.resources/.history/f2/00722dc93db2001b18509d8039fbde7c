@@ -1,0 +1,17 @@
+Micro
+http://localhost:8082/getUser/feign/1
+http://localhost:8082/getUser/1
+
+Micro1
+http://localhost:9091/getStudent/1
+
+Eureka
+http://localhost:8761/
+
+API GateWay
+http://localhost:8765/user/getUser/1
+http://localhost:8765/student/getStudent/1
+
+final Url
+http://localhost:8765/getUser/1
+http://localhost:8765/getStudent/1

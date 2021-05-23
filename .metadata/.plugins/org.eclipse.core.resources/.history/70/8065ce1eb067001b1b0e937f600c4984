@@ -1,0 +1,19 @@
+package com.example.jpa.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import com.example.jpa.dao.UserDao;
+import com.example.jpa.entities.User;
+@Controller
+public class HomeController {
+	@Autowired
+	private UserDao user;
+	@GetMapping("/home")
+	public User findByuser() {
+		System.out.println("controller");
+		return user.findById(1);
+	}
+
+}

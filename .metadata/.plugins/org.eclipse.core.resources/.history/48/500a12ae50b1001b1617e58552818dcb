@@ -1,0 +1,51 @@
+package com.example.userService.controller;
+
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
+
+import com.example.userService.entity.Student;
+import com.example.userService.entity.User;
+import com.example.userService.service.UserService;
+
+import antlr.collections.List;
+
+@RestController
+public class UserController {
+	@Autowired
+	private UserService userService;
+	@Autowired
+	private RestTemplate restTemplate;
+
+	@GetMapping(value = "/getUser/{id}")
+	public ResponseEntity<User> findUser(@PathVariable("id") int id) {
+		System.out.println("In Usr Controller");
+		Optional<User> user = userService.findUserById(id);
+		System.out.println(user.get().getEmail());
+		User user1 = new User();
+		//List student = this.restTemplate.getForObject("http://localhost:9091/getStudent/1", List.class);
+		
+		ResponseEntity<Student> responseEntity=
+				this.restTemplate.getForEntity("http://localhost:9091/getStudent/1", Student.class);
+		/*
+		 * if (user.isPresent()) { user1.setEmail(user.get().getEmail());
+		 * user1.setId(user.get().getId()); user1.setPassword(user.get().getPassword());
+		 * user1.setStudents((java.util.List<Student>) student); }
+		 */
+		user1.set
+		System.out.println(user1.get);
+
+		 return ResponseEntity.status(HttpStatus.OK).body(user1);
+	
+}
+
+		
+	}
+

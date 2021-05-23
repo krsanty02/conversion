@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Inline local variable &apos;com.gateway.ApiConfiguration.gatewayRouter().routeFunction&apos; in &apos;com.gateway.ApiConfiguration.gatewayRouter()&apos;&#x0D;&#x0A;- Original project: &apos;Api-gateway&apos;&#x0D;&#x0A;- Original element: &apos;com.gateway.ApiConfiguration.gatewayRouter().routeFunction&apos;" description="Inline local variable &apos;routeFunction&apos;" id="org.eclipse.jdt.ui.inline.temp" input="/src\/main\/java&lt;com.gateway{ApiConfiguration.java" selection="762 13" stamp="1620721372617" version="1.0"/>
+</session>

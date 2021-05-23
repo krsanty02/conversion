@@ -1,0 +1,76 @@
+package com.example.jpa.controller;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import org.springframework.web.bind.annotation.GetMapping;
+
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.jpa.entities.User1;
+import com.example.jpa.service.UserService;
+
+@RestController
+public class HomeController {
+
+	@Autowired
+	private UserService userService;
+
+	@GetMapping(value = "/hii")
+	public String display() {
+		return "hello";
+	}
+
+	@GetMapping(value = "/hello")
+	public User1 getSave() {
+		System.out.println("coming in save Controler");
+		User1 user = new User1();
+		user.setCity("patna");
+		user.setPassword("password12345");
+		user.setUserName("Ramesh");
+		return userService.getSave(user);
+	}
+
+	@GetMapping(value = "/getUser")
+	public Optional<User1> getUser() {
+		System.out.println("coming in getuser Controler");
+
+		return userService.getUser();
+	}
+
+	@GetMapping(value = "/getAllUser")
+	public List<User1> getAllUser() {
+		System.out.println("coming in getAlluser Controler");
+
+		return userService.getAllUser();
+	}
+
+	@GetMapping(value = "/delUser")
+	public String delUser() {
+		System.out.println("coming in deluser Controler");
+
+		return userService.delUser();
+	}
+
+	@GetMapping(value = "/updtUser")
+	public String updtUser() {
+		System.out.println("coming in updtuser Controler");
+		userService.updtUser();
+		return "updated";
+	}
+	
+	@GetMapping(value = "/findByName")
+	public User1 findUser() {
+		System.out.println("coming in findUser Controler");
+		return userService.findByName();
+		
+	}
+	@GetMapping(value = "/getData")
+	public User1 getData() {
+		System.out.println("coming in getData Controler");
+		return userService.getData();
+		
+	}
+}

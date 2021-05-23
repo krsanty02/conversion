@@ -1,0 +1,6 @@
+package snippet;
+
+public class Snippet {
+	Error response from daemon: failed to create endpoint 04docker_zipkin-server_1 on network 04docker_currency-network: failed during hnsCallRawResponse: hnsCall failed in Win32: The object already exists. (0x1392)
+}
+

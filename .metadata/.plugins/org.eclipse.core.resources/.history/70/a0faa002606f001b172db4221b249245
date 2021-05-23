@@ -1,0 +1,125 @@
+package com.example.jpa.controller;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.jpa.entities.Person;
+import com.example.jpa.entities.User1;
+import com.example.jpa.service.UserService;
+
+@RestController
+public class HomeController {
+
+	@Autowired
+	private UserService userService;
+
+	@GetMapping(value = "/hii")
+	public String display() {
+		return "hello";
+	}
+
+	@PostMapping(value = "/hello")
+	public ResponseEntity<User1>  getSave(@RequestBody User1 user) {
+		System.out.println("coming in save Controler");
+		//User1 user = new User1();
+		/*
+		 * user.setCity("Ranchi"); user.setPassword("krsanty");
+		 * user.setUserName("Raja");
+		 */
+		System.out.println(user.toString());
+		user=userService.getSave(user);
+		return ResponseEntity.status(HttpStatus.OK).body(user);
+				
+	}
+	@PostMapping(value = "/save")
+	public ResponseEntity<Person>  getSave(@RequestBody Person person) {
+		System.out.println("coming in save Controler");
+		//User1 user = new User1();
+		/*
+		 * user.setCity("Ranchi"); user.setPassword("krsanty");
+		 * user.setUserName("Raja");
+		 */
+		Person person1= new Person();
+		System.out.println(person.toString());
+		System.out.println(person.getUser().getPassword());
+		System.out.println(person.getUser().getCity());
+		person1=userService.getSave(person);
+		return ResponseEntity.status(HttpStatus.OK).body(person1);
+				
+	}
+	@GetMapping(value = "/getUser")
+	public ResponseEntity  getUser() {
+		System.out.println("coming in getuser Controler");
+		Optional<User1> user=	userService.getUser();
+		if(user.isPresent())
+		return ResponseEntity.status(HttpStatus.OK).body(user) ;
+		else
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Not Found") ;
+	}
+	//To get the details of person by id
+	@GetMapping(value = "/getPerson")
+	public ResponseEntity  getPerson() {
+		System.out.println("coming in getperson Controler");
+		Optional<Person> person=userService.getPerson();
+		if(person.isPresent())
+		return ResponseEntity.status(HttpStatus.OK).body(person) ;
+		else
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Not Found") ;
+	}
+
+	@GetMapping(value = "/getAllUser")
+	public List<User1> getAllUser() {
+		System.out.println("coming in getAlluser Controler");
+
+		return userService.getAllUser();
+	}
+//To get the details of all person
+	@GetMapping(value = "/getAllPerson")
+	public List<Person> getAllPerson() {
+		System.out.println("coming in getAllPerson Controler");
+
+		return userService.getAllPerson();
+	}
+	@DeleteMapping(value = "/delUser")
+	public String delUser() {
+		System.out.println("coming in deluser Controler");
+
+		return userService.delUser();
+	}
+
+	@PutMapping(value = "/updtUser")
+	public String updtUser() {
+		System.out.println("coming in updtuser Controler");
+		userService.updtUser();
+		return "updated";
+	}
+	//To update the details of person
+	@PutMapping(value = "/updtPerson")
+	public ResponseEntity<String> updtPerson() {
+		System.out.println("coming in update Person Controler");
+		userService.updtPerson();
+		return ResponseEntity.status(HttpStatus.OK).body("Updated") ;
+	}
+	@GetMapping(value = "/findByName")
+	public User1 findUser() {
+		System.out.println("coming in findUser Controler");
+		return userService.findByName();
+		
+	}
+	@GetMapping(value = "/getData")
+	public User1 getData() {
+		System.out.println("coming in getData Controler");
+		return userService.getData();
+		
+	}
+}

@@ -1,0 +1,16 @@
+package com.example.userService.proxy;
+
+import java.util.Optional;
+
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
+import com.example.userService.entity.Student;
+import com.example.userService.entity.User;
+@FeignClient(name="Student")
+public interface UserProxy {
+	@GetMapping(value = "/getStudent/{id}")
+	public Student findUser(@PathVariable("id") int id) ;
+}
