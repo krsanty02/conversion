@@ -11250,3 +11250,5 @@ java.io.StreamCorruptedException: invalid stream header: 00000000
 2021-05-26 19:11:46,036 [Worker-29: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
 2021-05-26 19:11:46,036 [Worker-29: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
 2021-05-26 19:11:46,036 [Worker-29: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory G:\springboot\springBootDurgesh\JsonToXml\src\test\resources
+2021-05-26 21:08:21,056 [Worker-47: Fetching remote refs from git@github.com:krsanty02/microservices-udemy.git] INFO  o.a.s.c.u.s.e.EdDSASecurityProviderRegistrar - getOrCreateProvider(EdDSA) created instance of net.i2p.crypto.eddsa.EdDSASecurityProvider
+2021-05-26 21:08:22,450 [Worker-47: Fetching remote refs from git@github.com:krsanty02/microservices-udemy.git] INFO  o.a.s.c.i.DefaultIoServiceFactoryFactory - No detected/configured IoServiceFactoryFactory using Nio2ServiceFactoryFactory
